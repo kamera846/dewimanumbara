@@ -1,142 +1,122 @@
 @extends('layouts.main')
 
 @section('page-content')
-@foreach ($sections as $section)
-    <?php 
-        $image = json_decode($section->cover);
-    ?>
-    @if ($section->slug === 'contact')
-    <section class="page-title" style="background-image: url(<?= asset($image != null ? 'storage/'.$image[0] : 'assets/images/background/bg-4.jpg') ?>)">
-        <div class="drop-layer-contact"></div>
-        <div class="auto-container">
-            <div class="content-box">
-                <div class="content-wrapper">
-                    <div class="title">
-                        <h1 style="z-index: 3">{{ $section->title }}</h1>
+<!-- start page title section -->
+<section class="wow animate__fadeIn bg-light-gray padding-35px-tb page-title-small top-space">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 col-md-6 text-md-start text-center">
+                <!-- start page title -->
+                <h1 class="alt-font text-extra-dark-gray font-weight-600 mb-0 text-uppercase">Kontak</h1>
+                <!-- end page title -->
+            </div>
+            <div class="col-lg-4 col-md-6 breadcrumb text-small alt-font justify-content-center justify-content-md-end sm-margin-15px-top">
+                <!-- breadcrumb -->
+                <ul>
+                    <li><a href="/" class="text-dark-gray">Beranda</a></li>
+                    <li class="text-dark-gray">Kontak Kami</li>
+                </ul>
+                <!-- end breadcrumb -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end page title section -->
+<!-- start help section -->
+<section class="wow animate__fadeIn big-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8 text-center">
+                <h2 class="alt-font font-weight-700 letter-spacing-minus-1 text-extra-dark-gray">Hubungi Kami</h2>
+                <p class="w-75 mx-auto sm-w-100">Jika anda punya pertanyaan, masalah, ataupun saran supaya kami lebih baik, jangan ragu untuk menghubungi kami.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end help section -->
+<!-- start contact section -->
+<section class="no-padding bg-extra-dark-gray">
+    <div class="container-fluid">
+        <div class="row row-cols-1 row-cols-lg-2">
+            <div class="col p-0 cover-background md-h-450px sm-h-350px wow animate__fadeInLeft" style="background: url(https://via.placeholder.com/1000x700)"></div>
+            <div class="col p-0 wow animate__fadeInRight">
+                <div class="row row-cols-1 row-cols-sm-2 m-0">
+                    <!-- start contact item -->
+                    <div class="col bg-black d-flex flex-column justify-content-center align-items-center text-center h-350px lg-h-300px sm-h-250px last-paragraph-no-margin">
+                        <i class="icon-envelope text-deep-pink icon-medium margin-25px-bottom"></i>
+                        <div class="text-white-2 text-uppercase alt-font font-weight-600 margin-5px-bottom">Email</div>
+                        <p class="mx-auto text-medium mb-0"><a href="mailto:info@domain.com">info@domain.com</a></p>
                     </div>
-                    <ul class="bread-crumb" style="z-index: 3">
-                        <li><a href="./">Beranda</a></li>
-                        <li>{{ $section->title }}</li>
+                    <!-- end contact item -->
+                    <!-- start contact item -->
+                    <div class="col bg-extra-dark-gray d-flex flex-column justify-content-center align-items-center text-center h-350px lg-h-300px sm-h-250px last-paragraph-no-margin">
+                        <i class="icon-chat text-deep-pink icon-medium margin-25px-bottom"></i>
+                        <div class="text-white-2 text-uppercase alt-font font-weight-600 margin-5px-bottom">Telepon</div>
+                        <p class="mx-auto text-medium mb-0">+62 812 2018 0900</p>
+                    </div>
+                    <!-- end contact item -->
+                </div>
+                <div class="row m-0">
+                    <!-- start contact item -->
+                    <div class="col bg-dark d-flex flex-column justify-content-center align-items-center text-center h-350px lg-h-300px sm-h-250px last-paragraph-no-margin">
+                        <i class="icon-map text-deep-pink icon-medium margin-25px-bottom"></i>
+                        <div class="text-white-2 text-uppercase alt-font font-weight-600 margin-5px-bottom">Alamat</div>
+                        <p class="w-60 lg-w-80 mx-auto text-medium">Desa Manubhara, Kecamatan Inerie, Kabupaten Ngada - NTT</p>
+                    </div>
+                    <!-- end contact item -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end contact section -->        
+<!-- start form section -->
+<section class="wow animate__fadeIn" id="start-your-project">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-6 col-lg-7 col-md-9 col-sm-10 margin-eight-bottom md-margin-40px-bottom sm-margin-30px-bottom text-center last-paragraph-no-margin">
+                <p>Isi formulir berikut untuk menghubungi kami melalui whatsapp.</p>
+            </div>  
+        </div>
+        <form id="project-contact-form" action="email-templates/contact-form.php" method="post">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-results d-none"></div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <input type="text" name="nama" id="nama" placeholder="Nama lengkap *" class="big-input required">
+                </div>
+                <div class="col-12 col-md-6">
+                    <input type="email" name="email" id="email" placeholder="Alamat e-mail *" class="big-input required">
+                </div>
+                <div class="col-12">
+                    <textarea name="pesan" id="pesan" placeholder="Isi pesan anda" rows="6" class="big-textarea"></textarea>
+                </div>
+                <div class="col-12 text-center">
+                    <button id="project-contact-us-button" type="submit" class="btn btn-transparent-dark-gray btn-large margin-20px-top submit">Kirim Pesan</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<!-- end form section -->
+<section class="wow animate__fadeIn bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center social-style-4">
+                <span class="text-medium font-weight-600 text-uppercase d-block alt-font text-extra-dark-gray margin-30px-bottom">Jejaring Sosial</span>
+                <div class="social-icon-style-4">
+                    <ul class="margin-30px-top large-icon">
+                        <li><a class="facebook" href="http://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i><span></span></a></li>
+                        <li><a class="twitter" href="http://twitter.com" target="_blank"><i class="fab fa-twitter"></i><span></span></a></li>
+                        <li><a class="instagram" href="http://instagram.com" target="_blank"><i class="fab fa-instagram"></i><span></span></a></li>
+                        {{-- <li><a class="dribbble" href="http://dribbble.com" target="_blank"><i class="fab fa-dribbble"></i><span></span></a></li>
+                        <li><a class="linkedin" href="http://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i><span></span></a></li> --}}
                     </ul>
                 </div>
-            </div>
+            </div> 
         </div>
-    </section>
-    @endif
-@endforeach
-    <!-- Contact Form section -->
-    <section class="contact-form-section">
-        <div class="auto-container">
-            <div class="wrapper-box">
-                @foreach ($sections as $section)
-                @if ($section->slug === 'help')
-                <div class="row">
-                    <div class="col-lg-5">
-                        <?php 
-                            $imageHelp = json_decode($section->cover);
-                        ?>
-                        <div class="our-facts" style="background-image: url(<?= asset($imageHelp != null ? 'storage/'.$imageHelp[0] : 'assets/images/background/bg-4.jpg') ?>);height: 100% !important">
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <div class="contact-form-area">
-                            <div class="sec-title mb-30">
-                                <h2>{{ $section->title }}</h2>
-                            </div>
-                            <div class="text mb-30">
-                                {!! $section->description !!}
-                            </div>
-                            <!--Contact Form-->
-                            <div class="contact-form">
-                                <form method="post" target="_blank" id="contact-form" autocomplete="off">
-                                    {{ csrf_field() }}
-                                    <div class="row">
-                                        <div class="form-group col-md-12">
-                                            <input type="text" name="nama" placeholder="Nama" required />
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <input type="email" name="email" placeholder="Email" required />
-                                        </div>
-                                        
-                                        {{-- nomor --}}
-                                        @foreach ($settings as $setting)
-                                        <input type="hidden" name="nomor" value="{{ $setting->telpon }}" />
-                                        @endforeach
-                                        
-                                        <div class="form-group col-md-12">
-                                            <textarea name="pesan" placeholder="Isi pesan" required></textarea>
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <button class="theme-btn btn-style-one" type="submit"><span>Kirim Pesan</span></button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endif
-                @endforeach
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Contact Info section -->
-    <section class="contact-info-section">
-        <div class="auto-container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="contact-info-block">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11160.046290709839!2d120.14141150700297!3d-8.531169585666012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2db47f68c228c91f%3A0xd9ee4fa3474613c!2sDESA%20LOHA!5e0!3m2!1sid!2slk!4v1654579427339!5m2!1sid!2slk"
-                            width="100%"
-                            height="450"
-                            style="border: 0"
-                            allowfullscreen=""
-                            loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"
-                        ></iframe>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="contact-info-block">
-                        @foreach ($sections as $section)
-                            
-                        @if ($section->slug === 'maps')
-                        <h3>{{ $section->title }}</h3>
-                        <div class="text mb-30">
-                            {!! $section->description !!} <br />
-                        </div>
-                        @endif
-                        @endforeach
-                        <ul class="contact-info">
-                            <li>
-                                @foreach ($settings as $setting)
-                                    
-                                <div class="icon"><img src="{{asset('assets/images/icons/icon-1.png')}}" alt="" /></div>
-                                <div class="text">
-                                    <strong>Lokasi</strong>{{ $setting->lokasi }}<br />
-                                </div>
-                            </li>
-                            <li>
-                                <div class="icon"><img src="{{asset('assets/images/icons/icon-2.png')}}" alt="" /></div>
-                                <div class="text">
-                                    <strong>Telepon</strong>
-                                    <a href="tel:+62 823 3976 5401">{{ $setting->telpon }}</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="icon"><img src="{{asset('assets/images/icons/icon-3.png')}}" alt="" /></div>
-                                <div class="text">
-                                    <strong>Email</strong>
-                                    <a href="mailto:munciple@example.net">{{ $setting->email}}</a>
-                                </div>
-                                @endforeach
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 @endsection

@@ -1,82 +1,211 @@
 @extends('layouts.main')
 
 @section('page-content')
-@foreach ($sections as $section)
-<?php 
-$image = json_decode($section->cover);
-?>
-@if($section->slug === 'gallery')
-    <section class="page-title" style="background-image: url(<?= asset($image != null ? 'storage/'.$image[0] : 'assets/images/background/bg-4.jpg') ?>)">
-        <div class="drop-layer-gallery"></div>
-        <div class="auto-container">
-            <div class="content-box">
-                <div class="content-wrapper">
-                    <div class="title">
-                        <h1 style="z-index: 3">{{ $section->title }}</h1>
+<!-- start page title section -->
+<section class="wow animate__fadeIn bg-light-gray padding-35px-tb page-title-small top-space">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 col-md-6 text-md-start text-center">
+                <!-- start page title -->
+                <h1 class="alt-font text-extra-dark-gray font-weight-600 mb-0 text-uppercase">Galeri</h1>
+                <!-- end page title -->
+            </div>
+            <div class="col-lg-4 col-md-6 breadcrumb text-small alt-font justify-content-center justify-content-md-end sm-margin-15px-top">
+                <!-- breadcrumb -->
+                <ul>
+                    <li><a href="/" class="text-dark-gray">Beranda</a></li>
+                    <li class="text-dark-gray">Galeri Kami</li>
+                </ul>
+                <!-- end breadcrumb -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end page title section -->
+
+<!-- start photo gallery section -->
+<section class="wow animate__fadeIn">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 lightbox-portfolio p-0">
+                <div id="justified" class="justified-gallery" data-justified-options='{ "rowHeight": 400, "maxRowHeight": false, "captions": true, "margins": 10, "waitThumbnailsLoad": true }'>
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp">
+                        <a href="https://via.placeholder.com/487x650" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/487x650" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div> 
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp" data-wow-delay="0.2s">
+                        <a href="https://via.placeholder.com/900x650" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/900x650" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div> 
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp" data-wow-delay="0.4s">
+                        <a href="https://via.placeholder.com/800x1200" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/800x1200" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div> 
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp" data-wow-delay="0.6s">
+                        <a href="https://via.placeholder.com/800x1195" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/800x1195" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div> 
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp">
+                        <a href="https://via.placeholder.com/1240x782" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/1240x782" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div> 
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp" data-wow-delay="0.2s">
+                        <a href="https://via.placeholder.com/800x534" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/800x534" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div> 
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp" data-wow-delay="0.4s">
+                        <a href="https://via.placeholder.com/800x640" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/800x640" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div> 
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp">
+                        <a href="https://via.placeholder.com/800x900" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/800x900" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div> 
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp" data-wow-delay="0.2s">
+                        <a href="https://via.placeholder.com/800x1200" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/800x1200" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div> 
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp" data-wow-delay="0.4s">
+                        <a href="https://via.placeholder.com/800x593" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/800x593" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div> 
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp" data-wow-delay="0.6s">
+                        <a href="https://via.placeholder.com/800x750" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/800x750" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
                     </div>
-                    <ul class="bread-crumb" style="z-index: 3">
-                        <li><a href="./">Beranda</a></li>
-                        <li>{{ $section->title }}</li>
-                    </ul>
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp">
+                        <a href="https://via.placeholder.com/975x650" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/975x650" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div>
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp" data-wow-delay="0.2s">
+                        <a href="https://via.placeholder.com/488x650" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/488x650" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div>
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp" data-wow-delay="0.4s">
+                        <a href="https://via.placeholder.com/800x650" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/800x650" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div>
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp" data-wow-delay="0.6s">
+                        <a href="https://via.placeholder.com/496x650" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/496x650" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div>
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp">
+                        <a href="https://via.placeholder.com/900x650" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/900x650" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div>
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp" data-wow-delay="0.2s">
+                        <a href="https://via.placeholder.com/850x567" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/850x567" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div>
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp" data-wow-delay="0.4s">
+                        <a href="https://via.placeholder.com/800x534" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/800x534" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div>
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp">
+                        <a href="https://via.placeholder.com/800x514" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/800x514" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div>
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp" data-wow-delay="0.2s">
+                        <a href="https://via.placeholder.com/1036x650" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/1036x650" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div>
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp" data-wow-delay="0.4s">
+                        <a href="https://via.placeholder.com/488x650" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/488x650" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div>
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp">
+                        <a href="https://via.placeholder.com/1040x650" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/1040x650" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div>
+                    <!-- end gallery item -->
+                    <!-- start gallery item -->
+                    <div class=" wow animate__fadeInUp" data-wow-delay="0.2s">
+                        <a href="https://via.placeholder.com/975x650" class="gallery-link justify-gallery-content" title="IMAGE TITLE"><img src="https://via.placeholder.com/975x650" alt="">
+                            <div class="justify-hover-icon text-center"><i class="ti-zoom-in text-white"></i></div>
+                        </a>
+                    </div>
+                    <!-- end gallery item -->
                 </div>
             </div>
         </div>
-    </section>
-    @endif
-    @endforeach
-    <!-- News section Three -->
-    <section class="news-section-three">
-        <div class="auto-container">
-
-            @if($jumlah_galeri >= 1 )
-                
-                <div class="row">
-                    @foreach($galleries as $gallery)
-
-                        <div class="col-lg-6 news-block">
-                            <div class="inner-box">
-                                <div class="image">
-                                    <img src="{{ asset('storage/' . $gallery->foto) }}" alt="{{ $gallery->judul }}"/>
-                                    <div class="overlay">
-                                        <div class="link-btn">
-                                            <a target="_blank" href="{{ asset('storage/' . $gallery->foto) }}"><i class="icon-arrow"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="lower-content">
-                                    <h4>{{ $gallery->judul }}</h4>
-                                    <div class="text">{{ $gallery->deskripsi }}</div>
-                                </div>
-                            </div>
-                        </div>
-
-                    @endforeach
-                </div>
-                <!-- Post Pagination -->
-                {{-- <ul class="post-pagination mt-5 mb-30">
-                    <li class="prev-page">
-                        <a href="#"><i class="icon-arrow"></i></a>
-                    </li>
-                    <li class="current"><span> 1</span></li>
+        <div class="text-center margin-100px-top md-margin-50px-top wow animate__fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+            <div class="pagination text-small text-uppercase text-extra-dark-gray">
+                <ul class="mx-auto">
+                    <li><a href="#"><i class="fas fa-long-arrow-alt-left margin-5px-right d-none d-md-inline-block"></i> Prev</a></li>
+                    <li class="active"><a href="#">1</a></li>
                     <li><a href="#">2</a></li>
                     <li><a href="#">3</a></li>
-                    <li class="next-page">
-                        <a href="#"><i class="icon-arrow"></i></a>
-                    </li>
-                </ul> --}}
-
-                <div class="row justify-content-center mt-3">
-                    {{ $galleries->links() }}
-                </div>
-
-            @else
-
-                <div class="col-12">
-                    <h3 class="text-center">Belum ada momen yang dapat dibagikan.</h3>
-                </div>
-
-            @endif
-
+                    <li><a href="#">Next <i class="fas fa-long-arrow-alt-right margin-5px-left d-none d-md-inline-block"></i></a></li>
+                </ul>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
+<!-- end photo gallery section -->
+
 @endsection

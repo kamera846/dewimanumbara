@@ -17,17 +17,17 @@ class MainController extends Controller
 {
     public function index()
     {
-        $setting = Setting::first();
+        // $setting = Setting::first();
         return view('index', [
-            'judul_halaman' => $setting->web_title,
-            'blogs' => Blog::latest('updated_at')->limit(3)->get(),
-            'newBlogs' => Blog::latest('updated_at')->get(),
-            'jumlah_blog' => Blog::count(),
-            'galleries' => Gallery::latest('updated_at')->limit(4)->get(),
-            'jumlah_galeri' => Gallery::count(),
-            'settings' => Setting::get(),
-            'socials' => Social::get(),
-            'sections' => Section::get(),
+            // 'judul_halaman' => $setting->web_title,
+            // 'blogs' => Blog::latest('updated_at')->limit(3)->get(),
+            // 'newBlogs' => Blog::latest('updated_at')->get(),
+            // 'jumlah_blog' => Blog::count(),
+            // 'galleries' => Gallery::latest('updated_at')->limit(4)->get(),
+            // 'jumlah_galeri' => Gallery::count(),
+            // 'settings' => Setting::get(),
+            // 'socials' => Social::get(),
+            // 'sections' => Section::get(),
         ]);
     }
 }

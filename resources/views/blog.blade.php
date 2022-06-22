@@ -1,179 +1,129 @@
 @extends('layouts.main')
 
 @section('page-content')
-@foreach ($sections as $section)
-    <?php 
-    $image = json_decode($section->cover);
-    ?>
-    @if ($section->slug === 'blog')
-    <section class="page-title" style="background-image: url(<?= asset($image != null ? 'storage/'.$image[0] : 'assets/images/background/bg-4.jpg') ?>)">
-        <div class="drop-layer-blog"></div>
-        <div class="auto-container">
-            <div class="content-box">
-                <div class="content-wrapper">
-                    <div class="title">
-                        <h1 style="z-index: 3">{{ $section->title }}</h1>
-                    </div>
-                    <ul class="bread-crumb" style="z-index: 3">
-                        <li><a href="./">Beranda</a></li>
-                        <li>{{ $section->title }}</li>
-                    </ul>
-                </div>
+<!-- start page title section -->
+<section class="wow animate__fadeIn bg-light-gray padding-35px-tb page-title-small top-space">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 col-md-6 text-md-start text-center">
+                <!-- start page title -->
+                <h1 class="alt-font text-extra-dark-gray font-weight-600 mb-0 text-uppercase">Artikel</h1>
+                <!-- end page title -->
+            </div>
+            <div class="col-lg-4 col-md-6 breadcrumb text-small alt-font justify-content-center justify-content-md-end sm-margin-15px-top">
+                <!-- breadcrumb -->
+                <ul>
+                    <li><a href="/" class="text-dark-gray">Beranda</a></li>
+                    <li class="text-dark-gray">Artikel Kami</li>
+                </ul>
+                <!-- end breadcrumb -->
             </div>
         </div>
-    </section>
-    @endif
-    @endforeach
-    <!-- Sidebar Page Container -->
-    <section class="sidebar-page-container">
-        <div class="auto-container">
-            <div class="row">
-                <div class="col-lg-8">
-
-                    @if($jumlah_blog >= 1 )
-
-                        @foreach($blogs as $blog)
-
-                            <div class="news-block-two">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <img src="{{ asset('storage/' . $blog->gambar_blog) }}" alt="{{ $blog->judul }}" />
-                                        <div class="overlay">
-                                            <div class="link-btn">
-                                                <a href="/blog/{{ $blog->slug }}"><i class="icon-arrow"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="lower-content">
-                                        <h4><a href="/blog/{{ $blog->slug }}">{{ $blog->judul }}</a></h4>
-                                        <div class="text">
-                                            {{ substr(strip_tags($blog->konten), 0, 285) }}...
-                                        </div>
-                                        <ul class="post-meta">
-                                            <li><i class="far fa-user"></i>{{ ucwords($blog->penulis) }}</li>
-                                            {{-- <li><i class="far fa-calendar"></i>{{ $tanggal . ' ' . $bulan}}</li> --}}
-                                            {{-- <li><i class="far fa-calendar"></i>{{ date('d-m-Y', strtotime($blog->created_at))}}</li> --}}
-                                            <li><i class="far fa-calendar"></i>{{ $blog->created_at->isoFormat('d MMMM Y') }}</li>
-                                            <li class="read-more">
-                                                <a href="/blog/{{ $blog->slug }}"><i class="icon-arrow"></i>Selengkapnya</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+    </div>
+</section>
+<!-- end page title section -->
+<section class="wow animate__fadeIn" style="visibility: visible; animation-name: fadeIn;">
+    <div class="container-fluid"> 
+        <div class="row">
+            <div class="col-12 blog-content">
+                <ul class="blog-grid blog-wrapper grid grid-3col lg-grid-3col lg-grid-2col md-grid-1col hover-option4 blog-post-style3 gutter-extra-large" style="position: relative; height: 1066.19px;">
+                    <li class="grid-sizer"></li>
+                    <!-- start post item -->
+                    <li class="grid-item last-paragraph-no-margin text-center text-sm-start animate__fadeInUp" style="position: absolute; left: 0%; top: 0px; visibility: visible; animation-name: fadeInUp;">
+                        <div class="blog-post bg-light-gray">
+                            <div class="blog-post-images overflow-hidden position-relative">
+                                <a href="/blog-details">
+                                    <img src="https://via.placeholder.com/1200x752" alt="" data-no-retina="">
+                                    <div class="blog-hover-icon"><span class="text-extra-large font-weight-300">+</span></div>
+                                </a>
+                            </div>
+                            <div class="post-details padding-40px-all md-padding-20px-all">
+                                <a href="/blog-details" class="alt-font post-title text-medium text-extra-dark-gray w-100 d-block lg-w-100 margin-15px-bottom">I like the body. I like to design everything to do with the body.</a>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum standard dummy...</p>
+                                <div class="separator-line-horrizontal-full bg-medium-gray margin-20px-tb"></div>
+                                <div class="author">
+                                    <span class="text-medium-gray text-uppercase text-extra-small d-inline-block">Oleh Jay Benjamin&nbsp;&nbsp;|&nbsp;&nbsp;13 May 2017</span>
                                 </div>
                             </div>
-
-                        @endforeach
-
-                        <!-- Post Pagination -->
-                        {{-- <ul class="post-pagination mt-5 mb-30">
-                            <li class="prev-page">
-                                <a href="#"><i class="icon-arrow"></i></a>
-                            </li>
-                            <li class="current"><span> 1</span></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li class="next-page">
-                                <a href="#"><i class="icon-arrow"></i></a>
-                            </li>
-                        </ul> --}}
-
-                        <div class="row justify-content-center">
-                            {{ $blogs->links() }}
                         </div>
-
-                    @else
-                        
-                        @if(request('cari'))
-                            <h4 class="text-center">Tidak ada hasil.</h3>
-                        @else
-                            <h4 class="text-center">Belum ada postingan.</h3>
-                        @endif
-
-                    @endif
-
-                </div>
-                <div class="col-lg-4">
-                    <aside class="sidebar blog-sidebar sidebar-style-two">
-                        <div class="widget widget_search">
-                            <h3 class="widget-title">Cari</h3>
-                            <form action="/blog" autocomplete="off" class="search-form">
-                                <div class="form-group">
-                                    <input type="search" name="cari" placeholder="Cari Postingan ..." value="{{ request('cari') }}"/>
-                                    <button type="submit"><i class="fas fa-search"></i></button>
+                    </li>
+                    <!-- end post item -->
+                    <!-- start post item -->
+                    <li class="grid-item last-paragraph-no-margin text-center text-sm-start animate__fadeInUp" style="position: absolute; left: 0%; top: 0px; visibility: visible; animation-name: fadeInUp;">
+                        <div class="blog-post bg-light-gray">
+                            <div class="blog-post-images overflow-hidden position-relative">
+                                <a href="/blog-details">
+                                    <img src="https://via.placeholder.com/1200x752" alt="" data-no-retina="">
+                                    <div class="blog-hover-icon"><span class="text-extra-large font-weight-300">+</span></div>
+                                </a>
+                            </div>
+                            <div class="post-details padding-40px-all md-padding-20px-all">
+                                <a href="/blog-details" class="alt-font post-title text-medium text-extra-dark-gray w-100 d-block lg-w-100 margin-15px-bottom">I like the body. I like to design everything to do with the body.</a>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum standard dummy...</p>
+                                <div class="separator-line-horrizontal-full bg-medium-gray margin-20px-tb"></div>
+                                <div class="author">
+                                    <span class="text-medium-gray text-uppercase text-extra-small d-inline-block">Oleh Jay Benjamin&nbsp;&nbsp;|&nbsp;&nbsp;13 May 2017</span>
                                 </div>
-                            </form>
+                            </div>
                         </div>
-
-                        @if(request('cari'))
-
-                            <div class="widget widget_popular_post">
-                                <h3 class="widget-title">Postingan Terbaru</h3>
-
-                                @foreach($recentPosts as $post)
-                                    
-                                    <article class="post">
-                                        <figure class="post-thumb">
-                                            <a href="/blog/{{ $post->slug }}"><img src="{{ asset('storage/' . $post->gambar_blog) }}" alt="{{ $post->judul }}" /></a>
-                                        </figure>
-                                        <div class="content">
-                                            <h5>
-                                                <a href="/blog/{{ $post->slug }}"">{{ $post->judul }}</a>
-                                            </h5>
-                                            <div class="post-info"><i class="far fa-calendar-alt"></i>{{ $post->created_at->isoFormat('d MMMM Y') }}</div>
-                                        </div>
-                                    </article>
-                                
-                                @endforeach
-
+                    </li>
+                    <!-- end post item -->
+                    <!-- start post item -->
+                    <li class="grid-item last-paragraph-no-margin text-center text-sm-start animate__fadeInUp" style="position: absolute; left: 0%; top: 0px; visibility: visible; animation-name: fadeInUp;">
+                        <div class="blog-post bg-light-gray">
+                            <div class="blog-post-images overflow-hidden position-relative">
+                                <a href="/blog-details">
+                                    <img src="https://via.placeholder.com/1200x752" alt="" data-no-retina="">
+                                    <div class="blog-hover-icon"><span class="text-extra-large font-weight-300">+</span></div>
+                                </a>
                             </div>
-                            
-                        @endif
-                        <!-- <div class="widget widget_categories style-two">
-                            <h3 class="widget-title">Blog Categories</h3>
-                            <div class="widget-content">
-                                <ul class="categories-list">
-                                    <li><a href="blog-details.php">Business & Taxation</a></li>
-                                    <li><a href="blog-details.php">Law, Justice & Police</a></li>
-                                    <li class="current"><a href="blog-details.php"> Government & Elections</a></li>
-                                    <li><a href="blog-details.php">Pets & Wildlife Area</a></li>
-                                    <li><a href="blog-details.php">Employment & Jobs</a></li>
-                                </ul>
+                            <div class="post-details padding-40px-all md-padding-20px-all">
+                                <a href="/blog-details" class="alt-font post-title text-medium text-extra-dark-gray w-100 d-block lg-w-100 margin-15px-bottom">I like the body. I like to design everything to do with the body.</a>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum standard dummy...</p>
+                                <div class="separator-line-horrizontal-full bg-medium-gray margin-20px-tb"></div>
+                                <div class="author">
+                                    <span class="text-medium-gray text-uppercase text-extra-small d-inline-block">Oleh Jay Benjamin&nbsp;&nbsp;|&nbsp;&nbsp;13 May 2017</span>
+                                </div>
                             </div>
-                        </div> -->
-                        <!-- Tag-cloud Widget -->
-                        <!-- <div class="widget widget_tag_cloud">
-                            <h3 class="widget-title">Tags Cloud</h3>
-                            <ul class="clearfix">
-                                <li><a href="#">recreation</a></li>
-                                <li><a href="#">activities</a></li>
-                                <li><a href="#">administration</a></li>
-                                <li><a href="#">city</a></li>
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">municipal</a></li>
-                                <li><a href="#">tourists</a></li>
-                                <li><a href="#">food & Drink</a></li>
-                            </ul>
-                        </div> -->
-                        <!-- Contact Widget two -->
-                        <!-- <div class="widget contact-widget-two" style="background-image: url(assets/images/resource/image-51.jpg)">
-                            <h3 class="widget-title">Municipal Complaints</h3>
-                            <div class="widget-content">
-                                <ul class="contact-info">
-                                    <li>
-                                        <a href="#"><i class="pe-7s-headphones"></i> Emergency 9922</a>
-                                    </li>
-                                    <li>
-                                        <a href="mailto:mail@governlia.net"><i class="pe-7s-mail-open"></i> mail@governlia.net</a>
-                                    </li>
-                                    <li>
-                                        <a href="tel:8526105599"><i class="pe-7s-call"></i> Call us 852-610-5599</a>
-                                    </li>
-                                </ul>
+                        </div>
+                    </li>
+                    <!-- end post item -->
+                    <!-- start post item -->
+                    <li class="grid-item last-paragraph-no-margin text-center text-sm-start animate__fadeInUp" style="position: absolute; left: 0%; top: 0px; visibility: visible; animation-name: fadeInUp;">
+                        <div class="blog-post bg-light-gray">
+                            <div class="blog-post-images overflow-hidden position-relative">
+                                <a href="/blog-details">
+                                    <img src="https://via.placeholder.com/1200x752" alt="" data-no-retina="">
+                                    <div class="blog-hover-icon"><span class="text-extra-large font-weight-300">+</span></div>
+                                </a>
                             </div>
-                        </div> -->
-                    </aside>
-                </div>
+                            <div class="post-details padding-40px-all md-padding-20px-all">
+                                <a href="/blog-details" class="alt-font post-title text-medium text-extra-dark-gray w-100 d-block lg-w-100 margin-15px-bottom">I like the body. I like to design everything to do with the body.</a>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum standard dummy...</p>
+                                <div class="separator-line-horrizontal-full bg-medium-gray margin-20px-tb"></div>
+                                <div class="author">
+                                    <span class="text-medium-gray text-uppercase text-extra-small d-inline-block">Oleh Jay Benjamin&nbsp;&nbsp;|&nbsp;&nbsp;13 May 2017</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- end post item -->
+                </ul>
             </div>
         </div>
-    </section>
+        <!-- start pagination -->
+        <div class=" text-center margin-100px-top md-margin-50px-top wow animate__fadeInUp" style="visibility: hidden; animation-name: none;">
+            <div class="pagination text-small text-uppercase text-extra-dark-gray">
+                <ul class="mx-auto">
+                    <li><a href="#"><i class="fas fa-long-arrow-alt-left margin-5px-right d-none d-md-inline-block"></i> Prev</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">Next <i class="fas fa-long-arrow-alt-right margin-5px-left d-none d-md-inline-block"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- end pagination -->
+    </div>
+</section>
 @endsection

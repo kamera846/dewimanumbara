@@ -12,26 +12,27 @@ class Contact extends Controller
 {
     function show()
     {
-        $settings = Setting::get();
-        foreach ($settings as $setting) {
-            if ($setting->web_title !== null) {
-                return view('contact', [
-                    'judul_halaman' => 'Kontak Kami | ' . $setting->web_title,
-                    'settings' => Setting::get(),
-                    'socials' => Social::get(),
-                    'sections' => Section::get(),
-                    'newBlogs' => Blog::latest('updated_at')->get(),
-                ]);
-            } else {
-                return view('contact', [
-                    'judul_halaman' => 'Kontak Kami',
-                    'settings' => Setting::get(),
-                    'socials' => Social::get(),
-                    'sections' => Section::get(),
-                    'newBlogs' => Blog::latest('updated_at')->get(),
-                ]);
-            }
-        }
+        return view('contact');
+        // $settings = Setting::get();
+        // foreach ($settings as $setting) {
+        //     if ($setting->web_title !== null) {
+        //         return view('contact', [
+        //             'judul_halaman' => 'Kontak Kami | ' . $setting->web_title,
+        //             'settings' => Setting::get(),
+        //             'socials' => Social::get(),
+        //             'sections' => Section::get(),
+        //             'newBlogs' => Blog::latest('updated_at')->get(),
+        //         ]);
+        //     } else {
+        //         return view('contact', [
+        //             'judul_halaman' => 'Kontak Kami',
+        //             'settings' => Setting::get(),
+        //             'socials' => Social::get(),
+        //             'sections' => Section::get(),
+        //             'newBlogs' => Blog::latest('updated_at')->get(),
+        //         ]);
+        //     }
+        // }
     }
 
     function sendMail(Request $request)

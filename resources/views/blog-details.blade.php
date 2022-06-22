@@ -1,141 +1,92 @@
 @extends('layouts.main')
 
 @section('page-content')
-    <section class="page-title style-two" style="background-image: url(<?= asset('storage/'.$blog->gambar_blog) ?>)">
-        <div class="drop-layer-detail"></div>
-        <div class="auto-container">
-            <div class="content-box">
-                <div class="content-wrapper">
-                    <div class="title">
-                        <h1>{{ $blog->judul }}</h1>
-                        <ul class="post-meta">
-                            <li><i class="far fa-user"></i>{{ ucwords($blog->penulis) }}</li>
 
-                            <li><i class="far fa-calendar"></i>{{ $blog->created_at->isoFormat('dddd, d MMMM Y') }}</li>
-                            {{-- <li><i class="far fa-calendar"></i>{{ $blog->created_at->isoFormat('d MMMM Y') }}</li> --}}
-                        </ul>
+<!-- start page title section -->
+<section class="wow animate__fadeIn bg-light-gray padding-35px-tb page-title-small top-space">
+    <div class="container position-relative">
+        <div class="row align-items-center">
+            <div class="col-xl-8 col-md-6 d-flex flex-column justify-content-center text-center text-md-start">
+                <!-- start page title -->
+                <h1 class="alt-font text-extra-dark-gray font-weight-600 mb-0 text-uppercase">Judul Postingan</h1>
+                <!-- end page title -->
+            </div>
+            <div class="col-xl-4 col-md-6 alt-font breadcrumb justify-content-center justify-content-md-end text-small sm-margin-10px-top">
+                <!-- breadcrumb -->
+                <ul class="text-center text-md-start text-uppercase">
+                    <li><span class="text-dark-gray">25 April 2017</span></li>
+                    <li><span class="text-dark-gray">Oleh Jay Benjamin</span></li>
+                </ul>
+                <!-- end breadcrumb -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end page title section -->
+<!-- start section -->
+<section class="wow animate__fadeIn">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9 last-paragraph-no-margin">
+                <img src="https://via.placeholder.com/1000x740" alt="" class="w-100 margin-50px-bottom md-margin-30px-bottom">
+                <h5 class="alt-font font-weight-600 text-extra-dark-gray">There is only one corner of the universe you can be certain of improving, and that's your own self.</h5>
+                <p class="text-large line-height-30 text-medium-gray sm-line-height-26">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like aldus pagemaker including versions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end section -->
+<!-- start parallax section -->
+<section class="wow animate__fadeIn p-0 parallax one-fourth-screen md-h-500px sm-h-350px background-position-x-50" data-parallax-background-ratio="0.5" style="background-image: url('https://via.placeholder.com/1920x1064')">
+    <div class="container">
+        <div class="row">
+            <div class="col-12"></div>
+        </div>
+    </div>
+</section>
+<!-- end parallax section -->
+<section class="wow animate__fadeIn">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9 last-paragraph-no-margin">
+                <h5 class="alt-font font-weight-600 text-extra-dark-gray">If you want to conquer fear, don't sit home and think about it. Go out and get busy.</h5>
+                <p class="text-large line-height-30 text-medium-gray sm-line-height-26">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like aldus pagemaker including versions.</p>
+                <img src="https://via.placeholder.com/1000x740" alt="" class="w-100 margin-30px-top margin-50px-bottom md-margin-30px-bottom">
+                <p class="text-large line-height-30 text-medium-gray sm-line-height-26">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- start parallax section -->
+<section class="wow animate__fadeIn p-0 parallax one-fourth-screen md-h-500px sm-h-350px background-position-x-50" data-parallax-background-ratio="0.5" style="background-image: url('https://via.placeholder.com/1920x1100')">
+    <div class="container">
+        <div class="row">
+            <div class="col-12"></div>
+        </div>
+    </div>
+</section>
+<!-- end parallax section -->
+<!-- start section -->
+<section class="wow animate__fadeIn">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9 d-flex flex-wrap last-paragraph-no-margin">
+                <div class="row row-cols-1 row-cols-lg-2 mx-0">
+                    <div class="col ps-0 text-large md-no-padding-lr md-margin-30px-bottom">
+                        <img src="https://via.placeholder.com/900x1350" alt="" class="w-100 margin-50px-bottom md-margin-30px-bottom">
+                        <span class="text-extra-dark-gray font-weight-600 alt-font margin-10px-bottom d-block">Attractive Beauty</span>
+                        <p class="text-large line-height-30 text-medium-gray sm-line-height-26">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.</p>
                     </div>
-                    <ul class="bread-crumb">
-                        <li><a href="../">Beranda</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li>Detail blog</li>
-                    </ul>
+                    <div class="col pe-0 text-large md-no-padding-lr text-center text-md-start">
+                        <img src="https://via.placeholder.com/900x1350" alt="" class="w-100 margin-50px-bottom md-margin-30px-bottom">
+                        <span class="text-extra-dark-gray font-weight-600 alt-font margin-10px-bottom d-block">Blonde Beauty</span>
+                        <p class="text-large line-height-30 text-medium-gray sm-line-height-26">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+<!-- end section -->
 
-    <!-- Sidebar Page Container -->
-    <section class="sidebar-page-container">
-        <div class="auto-container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="blog-single-post">
-                        <div class="top-content">
-                            <div class="image mb-5"><img src="{{ asset('storage/'.$blog->gambar_blog) }}" alt="" /></div>
-                            <p>{!! $blog->konten !!}</p>
-                        </div>
-                        <!-- <div class="author-box">
-                            <div class="image"><img src="assets/images/resource/author-6.jpg" alt="" /></div>
-                            <div class="content">
-                                <h4>Robert Christopher</h4>
-                                <h5>Writer, Blogger, Tourist (www.governlia.org)</h5>
-                                <div class="text">Fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culp quis officia deserunt mollit anim id est laborum.</div>
-                                <ul class="social-links">
-                                    <li>
-                                        <a href="#"><span class="fab fa-twitter"></span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="fab fa-facebook-f"></span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="fab fa-linkedin-in"></span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="fab fa-google-plus-g"></span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <aside class="sidebar blog-sidebar sidebar-style-two">
-                        <div class="widget widget_search">
-                            <h3 class="widget-title">Cari</h3>
-                            <form action="/blog" autocomplete="off" class="search-form">
-                                <div class="form-group">
-                                    <input type="search" name="cari" placeholder="Cari Postingan ..."/>
-                                    <button type="submit"><i class="fas fa-search"></i></button>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- <div class="widget widget_categories style-two">
-                            <h3 class="widget-title">Blog Categories</h3>
-                            <div class="widget-content">
-                                <ul class="categories-list">
-                                    <li><a href="blog-details.php">Business & Taxation</a></li>
-                                    <li><a href="blog-details.php">Law, Justice & Police</a></li>
-                                    <li class="current"><a href="blog-details.php"> Government & Elections</a></li>
-                                    <li><a href="blog-details.php">Pets & Wildlife Area</a></li>
-                                    <li><a href="blog-details.php">Employment & Jobs</a></li>
-                                </ul>
-                            </div>
-                        </div> -->
-                        <div class="widget widget_popular_post">
-                            <h3 class="widget-title">Postingan Terbaru</h3>
-
-                            @foreach($recentPosts as $post)
-                                
-                                <article class="post">
-                                    <figure class="post-thumb">
-                                        <a href="/blog/{{ $post->slug }}"><img src="{{ asset('storage/' . $post->gambar_blog) }}" alt="{{ $post->judul }}" /></a>
-                                    </figure>
-                                    <div class="content">
-                                        <h5>
-                                            <a href="/blog/{{ $post->slug }}"">{{ $post->judul }}</a>
-                                        </h5>
-                                        <div class="post-info"><i class="far fa-calendar-alt"></i>{{ $post->created_at->isoFormat('d MMMM Y') }}</div>
-                                    </div>
-                                </article>
-                            
-                            @endforeach
-
-                        </div>
-                        <!-- Tag-cloud Widget -->
-                        <!-- <div class="widget widget_tag_cloud">
-                            <h3 class="widget-title">Tags Cloud</h3>
-                            <ul class="clearfix">
-                                <li><a href="#">recreation</a></li>
-                                <li><a href="#">activities</a></li>
-                                <li><a href="#">administration</a></li>
-                                <li><a href="#">city</a></li>
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">municipal</a></li>
-                                <li><a href="#">tourists</a></li>
-                                <li><a href="#">food & Drink</a></li>
-                            </ul>
-                        </div> -->
-                        <!-- Contact Widget two -->
-                        <!-- <div class="widget contact-widget-two" style="background-image: url(assets/images/resource/image-51.jpg)">
-                            <h3 class="widget-title">Municipal Complaints</h3>
-                            <div class="widget-content">
-                                <ul class="contact-info">
-                                    <li>
-                                        <a href="#"><i class="pe-7s-headphones"></i> Emergency 9922</a>
-                                    </li>
-                                    <li>
-                                        <a href="mailto:mail@governlia.net"><i class="pe-7s-mail-open"></i> mail@governlia.net</a>
-                                    </li>
-                                    <li>
-                                        <a href="tel:8526105599"><i class="pe-7s-call"></i> Call us 852-610-5599</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div> -->
-                    </aside>
-                </div>
-            </div>
-        </div>
-    </section>
 @endsection
