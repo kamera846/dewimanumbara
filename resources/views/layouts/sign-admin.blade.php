@@ -33,7 +33,7 @@
         <footer class="py-5" id="footer-main">
             <div class="row align-items-center justify-content-center">
                 <div class="col-12">
-                    <div class="copyright text-center text-muted">&copy; 2022 <a href="/" class="font-weight-bold ml-1">LOHA</a> - Powered by <a href="https://jongkreatif.id/" target="_blank" class="font-weight-bold ml-1">Jongkreatif</a>.</div>
+                    <div class="copyright text-center text-muted">&copy; 2022 <a href="/" class="font-weight-bold ml-1">MANUMBARA</a> - Powered by <a href="https://jongkreatif.id/" target="_blank" class="font-weight-bold ml-1">Jongkreatif</a>.</div>
                 </div>
             </div>
         </footer>

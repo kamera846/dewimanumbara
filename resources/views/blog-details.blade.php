@@ -1,141 +1,88 @@
 @extends('layouts.main')
 
 @section('page-content')
-    <section class="page-title style-two" style="background-image: url(<?= asset('storage/'.$blog->gambar_blog) ?>)">
-        <div class="drop-layer-detail"></div>
-        <div class="auto-container">
-            <div class="content-box">
-                <div class="content-wrapper">
-                    <div class="title">
-                        <h1>{{ $blog->judul }}</h1>
-                        <ul class="post-meta">
-                            <li><i class="far fa-user"></i>{{ ucwords($blog->penulis) }}</li>
-
-                            <li><i class="far fa-calendar"></i>{{ $blog->created_at->isoFormat('dddd, d MMMM Y') }}</li>
-                            {{-- <li><i class="far fa-calendar"></i>{{ $blog->created_at->isoFormat('d MMMM Y') }}</li> --}}
-                        </ul>
-                    </div>
-                    <ul class="bread-crumb">
-                        <li><a href="../">Beranda</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li>Detail blog</li>
-                    </ul>
-                </div>
+<!-- Start end page title -->
+<section class="wow animate__fadeIn cover-background background-position-top top-space" style="background-image: url(<?= asset('storage/'.$blog->gambar_blog) ?>); visibility: visible; animation-name: fadeIn;">
+    <div class="opacity-medium bg-extra-dark-gray"></div>
+    <div class="container position-relative">
+        <div class="row align-items-center">
+            <div class="col-12 d-flex justify-content-center flex-column text-center page-title-large padding-30px-tb">
+                <!-- start page title -->
+                <h1 class="text-white-2 alt-font font-weight-600 margin-10px-bottom">{{ $blog->judul }}</h1>
+                <!-- end page title -->
+                <!-- start sub title -->
+                <span class="text-white-2 opacity6 alt-font margin-10px-bottom d-block text-uppercase text-small">{{ $blog->created_at->isoFormat('dddd, d MMMM Y') }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;by {{ ucwords($blog->penulis) }}&nbsp;&nbsp;&nbsp;</span>
+                <!-- end sub title -->
             </div>
         </div>
-    </section>
+    </div>
+</section>
+<!-- end page title -->
 
-    <!-- Sidebar Page Container -->
-    <section class="sidebar-page-container">
-        <div class="auto-container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="blog-single-post">
-                        <div class="top-content">
-                            <div class="image mb-5"><img src="{{ asset('storage/'.$blog->gambar_blog) }}" alt="" /></div>
+<!-- Start page section -->
+<section class="wow animate__fadeIn" style="visibility: visible; animation-name: fadeIn;">
+    <div class="container position-relative"> 
+        <div class="row">
+            <div class="col-12 blog-content">
+                <div class="row justify-content-center">
+                    <main class="col-12 col-xl-9 col-lg-8 right-sidebar md-margin-60px-bottom sm-margin-40px-bottom">
+                        <div class="col-12 blog-details-text last-paragraph-no-margin">
+                            <img src="{{ asset('storage/'.$blog->gambar_blog) }}" alt="" class="w-100 margin-45px-bottom" data-no-retina="" style="max-height: 62vh; object-fit: cover">
                             <p>{!! $blog->konten !!}</p>
                         </div>
-                        <!-- <div class="author-box">
-                            <div class="image"><img src="assets/images/resource/author-6.jpg" alt="" /></div>
-                            <div class="content">
-                                <h4>Robert Christopher</h4>
-                                <h5>Writer, Blogger, Tourist (www.governlia.org)</h5>
-                                <div class="text">Fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culp quis officia deserunt mollit anim id est laborum.</div>
-                                <ul class="social-links">
-                                    <li>
-                                        <a href="#"><span class="fab fa-twitter"></span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="fab fa-facebook-f"></span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="fab fa-linkedin-in"></span></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><span class="fab fa-google-plus-g"></span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <aside class="sidebar blog-sidebar sidebar-style-two">
-                        <div class="widget widget_search">
-                            <h3 class="widget-title">Cari</h3>
-                            <form action="/blog" autocomplete="off" class="search-form">
-                                <div class="form-group">
-                                    <input type="search" name="cari" placeholder="Cari Postingan ..."/>
-                                    <button type="submit"><i class="fas fa-search"></i></button>
-                                </div>
+                    </main>
+                    <aside class="col-12 col-xl-3 col-lg-4 col-md-7">
+                        <div class="d-inline-block w-100 margin-45px-bottom sm-margin-25px-bottom">
+                            <form action="/blog" class="position-relative">
+                                <div class="position-relative">
+                                    <input name="cari" id="text"  type="search" placeholder="Cari artikel..." class="bg-transparent padding-40px-right text-small mb-0 border-color-extra-light-gray medium-input float-start" value="{{ request('cari') }}">
+                                    <button type="submit" class="bg-transparent btn position-absolute right-0 top-1 search-button"><i class="fas fa-search ms-0"></i></button>
+                                </div>   
                             </form>
                         </div>
-                        <!-- <div class="widget widget_categories style-two">
-                            <h3 class="widget-title">Blog Categories</h3>
-                            <div class="widget-content">
-                                <ul class="categories-list">
-                                    <li><a href="blog-details.php">Business & Taxation</a></li>
-                                    <li><a href="blog-details.php">Law, Justice & Police</a></li>
-                                    <li class="current"><a href="blog-details.php"> Government & Elections</a></li>
-                                    <li><a href="blog-details.php">Pets & Wildlife Area</a></li>
-                                    <li><a href="blog-details.php">Employment & Jobs</a></li>
-                                </ul>
+                        @if (request('cari'))
+                        @foreach($blogs as $blog)
+                        <div class="blog-post-content d-flex align-items-center flex-wrap margin-60px-bottom padding-60px-bottom border-bottom border-color-extra-light-gray md-margin-30px-bottom md-padding-30px-bottom text-center text-md-start md-no-border">
+                            <div class="col-12 col-lg-5 blog-image p-0 md-margin-30px-bottom sm-margin-20px-bottom margin-45px-right md-no-margin-right">
+                                <a href="/blog/{{ $blog->slug }}"><img src="{{ 'storage/' . $blog->gambar_blog }}" alt="" data-no-retina=""></a>
                             </div>
-                        </div> -->
-                        <div class="widget widget_popular_post">
-                            <h3 class="widget-title">Postingan Terbaru</h3>
-
-                            @foreach($recentPosts as $post)
-                                
-                                <article class="post">
-                                    <figure class="post-thumb">
-                                        <a href="/blog/{{ $post->slug }}"><img src="{{ asset('storage/' . $post->gambar_blog) }}" alt="{{ $post->judul }}" /></a>
-                                    </figure>
-                                    <div class="content">
-                                        <h5>
-                                            <a href="/blog/{{ $post->slug }}"">{{ $post->judul }}</a>
-                                        </h5>
-                                        <div class="post-info"><i class="far fa-calendar-alt"></i>{{ $post->created_at->isoFormat('d MMMM Y') }}</div>
-                                    </div>
-                                </article>
-                            
-                            @endforeach
-
+                            <div class="col-12 col-lg-6 blog-text p-0">
+                                <div class="content margin-20px-bottom md-no-padding-left">
+                                    <a href="/blog/{{ $blog->slug }}" class="text-extra-dark-gray margin-5px-bottom alt-font text-extra-large font-weight-600 d-inline-block">{{ $blog->title }}</a>
+                                    <div class="text-medium-gray text-extra-small margin-15px-bottom text-uppercase alt-font"><span>Oleh <a href="/blog/{{ $blog->slug }}" class="text-medium-gray">{{ ucwords($blog->penulis) }}</a></span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<span>{{ $blog->created_at->isoFormat('d MMMM Y') }}</span>&nbsp;&nbsp;&nbsp;</div>
+                                    <p class="m-0 w-95 lg-w-100">{{ substr(strip_tags($blog->konten), 0, 285) }}...</p>
+                                </div>
+                                <a class="btn btn-very-small btn-dark-gray text-uppercase" href="/blog/{{ $blog->slug }}">Selengkapnya</a>
+                            </div>
                         </div>
-                        <!-- Tag-cloud Widget -->
-                        <!-- <div class="widget widget_tag_cloud">
-                            <h3 class="widget-title">Tags Cloud</h3>
-                            <ul class="clearfix">
-                                <li><a href="#">recreation</a></li>
-                                <li><a href="#">activities</a></li>
-                                <li><a href="#">administration</a></li>
-                                <li><a href="#">city</a></li>
-                                <li><a href="#">Business</a></li>
-                                <li><a href="#">municipal</a></li>
-                                <li><a href="#">tourists</a></li>
-                                <li><a href="#">food & Drink</a></li>
+                        @endforeach
+                        <div class="row justify-content-center">
+                            {{ $blogs->links() }}
+                        </div>
+                        @else
+                            @if(request('cari'))
+                                <h4 class="text-center">Tidak ada hasil.</h3>
+                            @endif
+                        <div class="margin-45px-bottom sm-margin-25px-bottom">
+                            <div class="text-extra-dark-gray margin-25px-bottom alt-font text-uppercase font-weight-600 text-small aside-title"><span>Artikel Lainnya</span></div>
+                            <ul class="latest-post position-relative">
+                                @foreach($recentPosts as $post)
+                                <li class="media d-flex">
+                                    <figure class="flex-shrink-0">
+                                        <a href="/blog/{{ $post->slug }}"><img src="{{ asset('storage/' . $post->gambar_blog) }}" alt="" data-no-retina=""></a>
+                                    </figure>
+                                    <div class="media-body flex-grow-1 text-small"><a href="/blog/{{ $post->slug }}" class="text-extra-dark-gray"><span class="d-block margin-5px-bottom">{{ $post->judul }}</span></a> <span class="d-block text-medium-gray text-small">{{ $blog->created_at->isoFormat('d MMMM Y') }}</span></div>
+                                </li>
+                                @endforeach
                             </ul>
-                        </div> -->
-                        <!-- Contact Widget two -->
-                        <!-- <div class="widget contact-widget-two" style="background-image: url(assets/images/resource/image-51.jpg)">
-                            <h3 class="widget-title">Municipal Complaints</h3>
-                            <div class="widget-content">
-                                <ul class="contact-info">
-                                    <li>
-                                        <a href="#"><i class="pe-7s-headphones"></i> Emergency 9922</a>
-                                    </li>
-                                    <li>
-                                        <a href="mailto:mail@governlia.net"><i class="pe-7s-mail-open"></i> mail@governlia.net</a>
-                                    </li>
-                                    <li>
-                                        <a href="tel:8526105599"><i class="pe-7s-call"></i> Call us 852-610-5599</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div> -->
+                        </div>
+                        @endif
                     </aside>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+<!-- end page section -->
+
 @endsection

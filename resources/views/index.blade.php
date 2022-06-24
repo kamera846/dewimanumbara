@@ -1,337 +1,301 @@
 @extends('layouts.main')
 
-
 @section('page-content')
-    <!-- Bnner Section -->
-    <section class="banner-section">
-        <div class="swiper-container banner-slider">
-            <div class="swiper-wrapper" style="z-index: -1">
-                <!-- Slide Item -->
-                @foreach ($sections as $section)
+
+<!-- start slider section -->
+<section class="p-0 wow animate__fadeIn">
+    <div class="swiper-container full-screen black-move sm-h-500px md-landscape-h-580px" data-slider-options='{ "loop": true, "slidesPerView": "1", "allowTouchMove":true, "autoplay": { "delay": 5000, "disableOnInteraction": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" }, "pagination": { "el": ".swiper-pagination", "clickable": true } }'>
+        <div class="swiper-wrapper">
+            <!-- start slider item -->
+            @foreach ($sections as $section)
                 @if($section->slug === 'carousel-1' && $section->isActive == 'true')
                 <?php 
                     $image = json_decode($section->cover);
                 ?>
-                <div class="swiper-slide" style="background-image: url(<?= asset($image != null ? 'storage/'.$image[0] : 'assets/images/background/bg-4.jpg') ?>)">
-                    <div class="drop-layer"></div>
-                    <div class="content-outer">
-                        <div class="content-box justify-content-center">
-                            <div class="inner text-center inner-corousel">
-                                <h1>
-                                    {{ $section->title }}
-                                    <br />
-                                    
-                                </h1>
-                                <div class="text">
-                                   {!! $section->description !!}<br />
-                                   
-                                </div>
+                <div class="swiper-slide cover-background" style="background-image:url(<?= asset($image != null ? 'storage/'.$image[0] : 'https://via.placeholder.com/1920x991') ?>);">
+                    <div class="container h-100">
+                        <div class="row h-100">
+                            <div class="col-12 d-flex justify-content-center flex-column text-center text-md-start">
+                                <h1 class="alt-font text-extra-dark-gray font-weight-700 letter-spacing-minus-1 line-height-80 w-55 margin-35px-bottom lg-w-60 md-w-70 lg-line-height-auto sm-w-100 sm-margin-15px-bottom">{{ $section->title }}</h1>
+                                <p class="text-extra-dark-gray text-large margin-four-bottom w-40 lg-w-50 md-w-60 sm-w-100 sm-margin-15px-bottom">{!! $section->description !!}</p>
+                                {{-- <div class="btn-dual"><a href="https://1.envato.market/g7jrr" target="_blank" class="btn btn-dark-gray btn-rounded btn-small no-margin-lr">Purchase Pofo</a><a href="https://1.envato.market/g7jrr" target="_blank" class="btn btn-transparent-dark-gray btn-rounded btn-small margin-20px-lr sm-margin-5px-top">Download now</a></div> --}}
                             </div>
                         </div>
                     </div>
                 </div>
-                @endif
-                <!-- Slide Item -->
-                @if ($section->slug === 'carousel-2' && $section->isActive == 'true')
+            @endif
+            <!-- end slider item -->
+            <!-- start slider item -->
+            @if($section->slug === 'carousel-2' && $section->isActive == 'true')
                 <?php 
                     $image = json_decode($section->cover);
                 ?>
-                <div class="swiper-slide" style="background-image: url(<?= asset($image != null ? 'storage/'.$image[0] : 'assets/images/background/bg-4.jpg') ?>)">
-                    <div class="drop-layer"></div>
-                    <div class="content-outer">
-                        <div class="content-box justify-content-center">
-                            <div class="inner text-center">
-                                <h1>
-                                    {{ $section->title }}
-                                    <br />
-                                    
-                                </h1>
-                                <div class="text">
-                                    {!! $section->description !!}<br />
-                                    
-                                </div>
-                            </div>
+            <div class="swiper-slide cover-background" style="background-image:url(<?= asset($image != null ? 'storage/'.$image[0] : 'https://via.placeholder.com/1920x991') ?>);">
+                <div class="container h-100">
+                    <div class="row h-100">
+                        <div class="col-12 d-flex justify-content-center flex-column text-center text-md-start">
+                            <h1 class="alt-font text-extra-dark-gray font-weight-700 letter-spacing-minus-1 line-height-80 w-55 margin-35px-bottom lg-w-60 md-w-70 lg-line-height-auto sm-w-100 sm-margin-15px-bottom">{{$section->title}}</h1>
+                            <p class="text-extra-dark-gray text-large margin-four-bottom w-40 lg-w-50 md-w-60 sm-w-100 sm-margin-15px-bottom">{!! $section->description !!}</p>
                         </div>
                     </div>
                 </div>
-                @endif
-                <!-- Slide Item -->
-                @if ($section->slug === 'carousel-3' && $section->isActive == 'true')
+            </div>
+            @endif
+            <!-- end slider item -->
+            <!-- start slider item -->
+            @if($section->slug === 'carousel-3' && $section->isActive == 'true')
                 <?php 
                     $image = json_decode($section->cover);
                 ?>
-                <div class="swiper-slide" style="background-image: url(<?= asset($image != null ? 'storage/'.$image[0] : 'assets/images/background/bg-4.jpg') ?>)">
-                    <div class="drop-layer"></div>
-                    <div class="content-outer">
-                        <div class="content-box">
-                            <div class="inner">
-                                <h1>
-                                    {{ $section->title }} <br />
-                                </h1>
-                                <div class="text">
-                                    {!! $section->description !!}<br />
-                                </div>
-                            </div>
+            <div class="swiper-slide cover-background" style="background-image:url(<?= asset($image != null ? 'storage/'.$image[0] : 'https://via.placeholder.com/1920x991') ?>);">
+                <div class="container h-100">
+                    <div class="row h-100">
+                        <div class="col-12 d-flex justify-content-center flex-column text-center text-md-start">
+                            <h1 class="alt-font text-extra-dark-gray font-weight-700 letter-spacing-minus-1 line-height-80 w-55 margin-35px-bottom lg-w-60 md-w-70 lg-line-height-auto sm-w-100 sm-margin-15px-bottom">{{$section->title}}</h1>
+                            <p class="text-extra-dark-gray text-large margin-four-bottom w-40 lg-w-50 md-w-60 sm-w-100 sm-margin-15px-bottom">{!! $section->description !!}</p>
+                            {{-- <div class="btn-dual"><a href="https://1.envato.market/g7jrr" target="_blank" class="btn btn-dark-gray btn-rounded btn-small no-margin-lr">Purchase Pofo</a><a href="https://1.envato.market/g7jrr" target="_blank" class="btn btn-transparent-dark-gray btn-rounded btn-small margin-20px-lr sm-margin-5px-tb">Download now</a></div> --}}
                         </div>
                     </div>
                 </div>
-                @endif
-                @endforeach
             </div>
+            @endif
+            @endforeach
+            <!-- end slider item -->
         </div>
-        <div class="banner-slider-nav">
-            <div class="banner-slider-control banner-slider-button-prev">
-                <span><i class="icon-arrow"></i></span>
-            </div>
-            <div class="banner-slider-control banner-slider-button-next">
-                <span><i class="icon-arrow"></i></span>
-            </div>
-        </div>
-    </section>
-    <!-- End Bnner Section -->
-
-<!-- About section -->
+        <!-- start slider pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- end slider pagination -->
+        <!-- start slider navigation -->
+        <!-- <div class="swiper-button-next light"><i class="ti-angle-right"></i></div>
+        <div class="swiper-button-prev light"><i class="ti-angle-left"></i></div> -->
+        <!-- end slider navigation -->
+    </div>
+</section>
+<!-- end slider section --> 
+<!-- start story section -->
 @foreach ($sections as $section)
-@if ($section->slug === 'about' && $section->isActive == 'true')
-<section class="about-section">
-    <div class="auto-container">
-            <div class="sec-title text-center">
-                <!-- <div class="sub-title">City With Equity - Efficiency - Opportunity</div> -->
-                <h2>{{$section->title}}</h2>
-            </div>
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="content-block wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        <div class="text" style="text-align:justify; text-indent: 2rem">
-                            "{!! $section->description !!}"
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <div class="image-block wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        <div class="row">
-                            <?php $image = json_decode($section->cover); ?>
-                            <div class="col-lg-6 column">
-                                @if($image != null)
-                                @foreach($image as $index => $item)
-                                    @if($index < 2)
-                                        <div class="image"><img src="{{asset('storage/' . $item)}}" alt="" style="height: 190px;object-fit: cover;" width="100%"/></div>
-                                    @endif
-                                @endforeach
-                                @endif
-                            </div>
-                            <div class="col-lg-6 column">
-                                @if($image != null)
-                                @foreach($image as $index => $item)
-                                    @if($index === 2)
-                                        <div class="image"><img src="{{asset('storage/' . $item)}}" alt="" style="height: 390px;object-fit: cover;" width="100%"/></div>
-                                    @endif
-                                @endforeach
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    @endif
-    @endforeach
-    
-    <!-- Projects section -->
-    <section class="projects-section">
-        <div class="auto-container">
-            <div class="row no-gutters">
-                @foreach ($sections as $section)
-                @if ($section->slug === 'produk-1' || $section->slug === 'produk-2' || $section->slug === 'produk-3' || $section->slug === 'produk-4')
-                <div class="col-xl-3 col-lg-6 project-block">
-                    <div class="inner-box" style="height: 300px">
-                            <?php $image = json_decode($section->cover); ?>
-                            <div class="image" style="height: 100%; background-color: black"><img src="<?= $section->cover != null ? asset('storage/'.$image[0]) : asset('assets/images/resource/image-5.jpg'); ?>" alt="" style="height: 100%; object-fit:cover; opacity: 0.6;" /></div>
-                            <div class="content" >
-                                @foreach($settings as $item)
-                                <h4>{{$item->web_title}}</h4>
-                                @endforeach
-                                <h3>{{$section->title}}</h3>
-                                <!-- <div class="link-btn">
-                                    <a href="#"><i class="icon-arrow"></i></a>
-                                </div> -->
-                            </div>
-                            <div class="overlay" >
-                                <div class="content-two">
-                                    <div class="text">
-                                        {!! $section->description !!}
-                                    </div>
-                                    <!-- <div class="link-btn">
-                                        <a href="#"><i class="icon-arrow"></i></a>
-                                    </div> -->
-                                </div>
-                            </div>
-                    </div>
-                </div>
-                @endif
-                @endforeach
-            </div>
-        </div>
-    </section>
-
-    <!-- Highlights section -->
-    @foreach ($sections as $section)
-    @if ($section->slug === 'gallery')
-    @if($jumlah_galeri != 0)
-        <section class="highlights-section">
-            <div class="auto-container">
-                <div class="sec-title">
-                    <!-- <div class="sub-title">City With Equity - Efficiency - Opportunity</div> -->
-                    <h2>{{ $section->title }}</h2>
-                </div>
-                <div class="highlight-block-area">
-                    <div class="row">
-                        <div class="col-lg-7">
-                            <div class="text-blcok">
-                                <div class="text" style="text-align: justify;">
-                                    {!! $section->description !!}  <br />
-                                </div>
-                                @if($jumlah_galeri > 4)
-                                <div class="link-btn">
-                                    <a href="/gallery" class="theme-btn btn-style-one"><span>Selengkapnya</span></a>
-                                </div>
-                                @endif
-                            </div>
-                            <div class="swiper-container highlight-thumbs">
-                                <div class="swiper-wrapper">
-                                    @foreach($galleries as $gallery)
-                                        <div class="swiper-slide">
-                                            <div class="thumb"><img src="{{ asset('storage/'.$gallery->foto) }}" alt="" /></div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                            <div class="highlight-slider-nav">
-                                <div class="highlight-slider-control highlight-slider-button-prev">
-                                    <span><i class="icon-arrow"></i></span>
-                                </div>
-                                <div class="highlight-slider-control highlight-slider-button-next">
-                                    <span><i class="icon-arrow"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-5">
-                            <!-- Swiper -->
-                            <div class="swiper-container highlight-image" style="margin: inherit;">
-                                <div class="swiper-wrapper">
-                                    @foreach($galleries as $gallery)
-                                        <div class="swiper-slide">
-                                            <div class="image"><img src="{{ asset('storage/'.$gallery->foto) }}" alt="" style="max-height: 70vh; min-height: 70vh; object-fit: cover"  width="100%" /></div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    @endif
-    @endif
-    @endforeach
-    <!-- Contact Info section -->
-    <section class="contact-info-section" style="margin-top: 210px; padding: 0">
-        <div class="auto-container">
-            @foreach ($sections as $section)
-            <?php 
-                $image = json_decode($section->cover);
-            ?>
-            @if($section->slug === 'help')
-                <div class="wrapper-box" style="background-image: url(<?= asset($image != null ? 'storage/'.$image[0] : 'assets/images/background/bg-4.jpg') ?>); padding: 0; padding-top: 90px; padding-bottom: 60px;">
-                <div class="drop-layer"></div>
-                <div class="top-content" style="padding-left: 50px; padding-right: 50px;">
-                    <h2>{{ $section->title }}</h2>
-                    <div class="text">
-                          {!! $section->description !!}<br />
-                    </div>
-                </div>
-                @endif
-                @endforeach
-                @foreach ($settings as $setting)
-                <div class="row justify-content-center" style="padding-left: 50px; padding-right: 50px;">
-                    <div class="col-lg-6 col-md-6 contact-info-block">
-                        <div class="inner-box">
-                            <div class="icon"><span class="pe-7s-call"></span></div>
-                            <h5>Call us</h5>
-                            <h4><a href="tel:8526105599">{{ $setting->telpon }}</a></h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 contact-info-block">
-                        <div class="inner-box">
-                            <div class="icon"><span class="pe-7s-mail-open"></span></div>
-                            <h5>Send Email</h5>
-                            <h4><a href="mailto:mail@govern.net">{{ $setting->email }}</a></h4>
-                        </div>
-                    </div>
-                    <!-- <div class="col-lg-3 col-md-6 contact-info-block">
-                        <div class="inner-box">
-                            <div class="icon"><span class="pe-7s-stopwatch"></span></div>
-                            <h5>Office Hours</h5>
-                            <h4>0900am - 0600pm</h4>
-                        </div>
-                    </div> -->
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-
-    <!-- News Section -->
-    <section class="news-section">
-        <div class="auto-container">
-            <div class="sec-title text-center">
-                <!-- <div class="sub-title">City With Equity - Efficiency - Opportunity</div> -->
-                <h2>Blog Terbaru</h2>
-            </div>
-            <div class="row">
-
-                @if($jumlah_blog >= 1)
-                    
-                    @foreach($blogs as $blog)
-
-                        <div class="col-lg-4 col-md-6 news-block">
-                            <div class="inner-box">
-                                <div class="image-two">
-                                    <img src="{{ asset('storage/'.$blog->gambar_blog) }}" alt="{{ $blog->judul }}" class="img"/>
-                                    <div class="overlay">
-                                        <div class="link-btn">
-                                            <a href="/blog/{{ $blog->slug }}"><i class="icon-arrow"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="lower-content">
-                                    <!-- <div class="category"><a href="#">Health & Fitness</a></div> -->
-                                    <h4>
-                                        <a href="/blog/{{ $blog->slug }}">{{ $blog->judul }}</a>
-                                    </h4>
-                                    <div class="text">
-                                        {{ substr(strip_tags($blog->konten), 0, 79) }}...
-                                    </div>
-                                    <ul class="post-meta">
-                                        <li><i class="far fa-user"></i>{{ ucwords($blog->penulis) }}</li>
-                                        <li><i class="far fa-calendar"></i>{{ $blog->created_at->isoFormat('d MMMM') }}</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                    @endforeach
-
+@if($section->slug === 'about'  && $section->isActive == 'true')
+<section class="wow animate__fadeIn">
+    <div class="container"> 
+        <div class="row align-items-center mb-5 md-margin-0px-bottom">
+            <div class="col-12 col-lg-4 text-center md-margin-30px-bottom wow animate__fadeInLeft">
+                <?php $image = json_decode($section->cover); ?>
+                @if($image != null)
+                            <div class="image"><img src="<?= asset('storage/'.$image[0]) ?>" alt="" style="min-height: 70vh;border-radius:10px; object-fit: cover;" width="100%"/></div>
                 @else
-
-                    <div class="col-12">
-                        <h3 class="text-center">(Belum ada postingan)</h3>
-                    </div>
-
+                    <img src="https://via.placeholder.com/500x730" alt="" class="border-radius-6 w-100">
                 @endif
-
+            </div> 
+            <div class="col-12 col-lg-8 text-center text-md-start padding-eight-lr lg-padding-six-lr md-padding-15px-lr wow animate__fadeInRight" data-wow-delay="0.2s">
+                <h6 class="alt-font text-extra-dark-gray">Cerita Desa</h6>
+                <p class="margin-5px-top"style="text-align: justify;">{!! $section->description !!}</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+@endif
+@endforeach
+<!-- end story section -->
+<!-- start feature box  -->
+<section class="bg-extra-dark-gray wow animate__fadeIn md-padding-one-half-lr sm-padding-two-lr">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- feature box item-->
+            @foreach ($sections as $section)
+            @if ($section->slug === 'produk-1' && $section->isActive === 'true')
+            <div class="col-12 col-lg-4 col-md-6 col-sm-10 feature-box-1 md-margin-60px-bottom sm-margin-40px-bottom wow animate__fadeInRight">
+                <div class="d-flex align-items-center margin-15px-bottom alt-font">
+                    <span class="text-large line-height-22 padding-20px-left sm-padding-15px w-100">{{ $section->title }}</span>
+                </div>
+                <p class="w-90 lg-w-100">
+                    {!! $section->description !!}
+                </p>
+                <div class="separator-line-horrizontal-medium-light3 bg-deep-pink margin-5px-top float-start"></div>
+            </div>
+            @endif
+            @endforeach
+            <!-- end feature box item-->
+            <!-- feature box item-->
+            @foreach ($sections as $section)
+            @if ($section->slug === 'produk-2' && $section->isActive === 'true')
+            <div class="col-12 col-lg-4 col-md-6 col-sm-10 feature-box-1 md-margin-60px-bottom sm-margin-40px-bottom wow animate__fadeInRight">
+                <div class="d-flex align-items-center margin-15px-bottom alt-font">
+                    <span class="text-large line-height-22 padding-20px-left sm-padding-15px w-100"> {{ $section->title }}</span>
+                    {{-- Fasilitas Desa --}}
+                </div>
+                <p class="w-90 lg-w-100">
+                    {{-- <ul>
+                        <li>Areal Parkir</li>
+                        <li>Balai Pertemuan</li>
+                        <li>Homestay/Rumah Tinggal/Guest House</li>
+                        <li>Kamar Mandi Umum</li>
+                        <li>Kios Souvenir</li>
+                        <li>Kuliner, Warung, Tempat Makan</li>
+                        <li>Selfie Area, Spot Foto</li>
+                    </ul> --}}
+                    {!! $section->description !!}
+                </p>
+                <div class="separator-line-horrizontal-medium-light3 bg-deep-pink margin-5px-top float-start"></div>
+            </div>
+            @endif
+            @endforeach
+            <!-- end feature box item-->
+            <!-- feature box item-->
+            @foreach ($sections as $section)
+            @if ($section->slug === 'produk-3' && $section->isActive === 'true')
+            <div class="col-12 col-lg-4 col-md-6 col-sm-10 feature-box-1 md-margin-60px-bottom sm-margin-40px-bottom wow animate__fadeInRight">
+                <div class="d-flex align-items-center margin-15px-bottom alt-font">
+                    <span class="text-large line-height-22 padding-20px-left sm-padding-15px w-100">{{ $section->title }} <br></span>
+                    {{-- Makanan khas, Souvenir, <br> & Hasil Bumi --}}
+                </div>
+                <p class="w-90 lg-w-100">
+                    {{-- <ul>
+                        <li>Nasi Kaget Colol</li>
+                        <li>Gelang Kopi Colol</li>
+                        <li>Kopi Kemasan</li>
+                        <li>Kopi</li>
+                        <li>Ikan Air Tawar</li>
+                    </ul> --}}
+                    {!! $section->description !!}
+                </p>
+                <div class="separator-line-horrizontal-medium-light3 bg-deep-pink margin-5px-top float-start"></div>
+            </div>
+            @endif
+            @endforeach
+            <!-- end feature box item-->
+        </div>
+    </div>
+</section>
+<!-- end feature box -->
+@foreach ($sections as $section)
+    @if ($section->slug === 'gallery' && $section->isActive === 'true')
+    @if($jumlah_galeri != 0)
+    <section class="wow animate__fadeIn">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-5 col-lg-6 col-md-7 col-sm-8 margin-eight-bottom md-margin-40px-bottom sm-margin-30px-bottom text-center">
+                <h5 class="alt-font text-extra-dark-gray font-weight-600 mb-0">{{ $section->title }}</h5>
+            </div>
+        </div>
+        <div class="row wow animate__fadeInUp">
+            <div class="col-12 filter-content overflow-hidden">
+                <ul class="hover-option2 portfolio-gallery portfolio-wrapper grid grid-3col xl-grid-3col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col gutter-medium" style="position: relative; height: 227.75px;">
+                    <li class="grid-sizer"></li>
+                    <!-- start image gallery item -->
+                    @foreach ($galleries as $gallery)
+                    <li class="grid-item wow animate__fadeInUp" style="position: absolute; left: 0%; top: 0px; animation: 0s ease 0s 1 normal none running none;">
+                        <a href="{{ 'storage/' . $gallery->foto }}" title="{{ $gallery->judul }}" data-group="three-columns-zoom-animation" class="lightbox-group-gallery-item">
+                            <figure>
+                                <div class="portfolio-img bg-extra-dark-gray">
+                                    <img src="{{ 'storage/' . $gallery->foto }}" alt="" class="project-img-gallery" data-no-retina="" style="max-height: 40vh; min-height:40vh; object-fit: cover">
+                                </div>
+                                <h6 class="text-small font-weight-500 text-extra-dark-gray mt-3 text-center">{{ $gallery->judul }}</h6>
+                                <figcaption>
+                                    <div class="portfolio-hover-main text-center">
+                                        <div class="portfolio-hover-box align-middle">
+                                            <div class="portfolio-hover-content position-relative">
+                                                <i class="ti-zoom-in text-white-2 fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </li>
+                    @endforeach
+                    <!-- end image gallery item -->
+                    <!-- start image gallery item -->
+                    {{-- <li class="grid-item wow animate__fadeInUp" style="position: absolute; left: 0%; top: 0px; animation: 0s ease 0s 1 normal none running none;">
+                        <a href="{{ 'storage/' . $gallery->foto }}" title="{{ $gallery->judul }}" data-group="three-columns-zoom-animation" class="lightbox-group-gallery-item">
+                            <figure>
+                                <div class="portfolio-img bg-extra-dark-gray">
+                                    <img src="{{ 'storage/' . $gallery->foto }}" alt="" class="project-img-gallery" data-no-retina="">
+                                </div>
+                                <h6 class="text-small font-weight-500 text-extra-dark-gray mt-3 text-center">{{ $gallery->judul }}</h6>
+                                <figcaption>
+                                    <div class="portfolio-hover-main text-center">
+                                        <div class="portfolio-hover-box align-middle">
+                                            <div class="portfolio-hover-content position-relative">
+                                                <i class="ti-zoom-in text-white-2 fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </li>
+                    <!-- end image gallery item -->
+                    <!-- start image gallery item -->
+                    <li class="grid-item wow animate__fadeInUp" style="position: absolute; left: 0%; top: 0px; animation: 0s ease 0s 1 normal none running none;">
+                        <a href="{{ 'storage/' . $gallery->foto }}" title="{{ $gallery->judul }}" data-group="three-columns-zoom-animation" class="lightbox-group-gallery-item">
+                            <figure>
+                                <div class="portfolio-img bg-extra-dark-gray">
+                                    <img src="{{ 'storage/' . $gallery->foto }}" alt="" class="project-img-gallery" data-no-retina="">
+                                </div>
+                                <h6 class="text-small font-weight-500 text-extra-dark-gray mt-3 text-center">{{ $gallery->judul }}</h6>
+                                <figcaption>
+                                    <div class="portfolio-hover-main text-center">
+                                        <div class="portfolio-hover-box align-middle">
+                                            <div class="portfolio-hover-content position-relative">
+                                                <i class="ti-zoom-in text-white-2 fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </li> --}}
+                    <!-- end image gallery item -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
+@endif
+@endforeach
+<!-- end galleery content section -->
+
+<!-- start blog section -->
+<section class="wow animate__fadeIn">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-5 col-lg-6 col-md-7 col-sm-8 margin-eight-bottom md-margin-40px-bottom sm-margin-30px-bottom text-center">
+                <h5 class="alt-font text-extra-dark-gray font-weight-600 mb-0">Artikel Terbaru</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 blog-content">
+                <ul class="blog-grid blog-wrapper grid grid-loading grid-3col xl-grid-3col lg-grid-3col md-grid-2col sm-grid-2col xs-grid-1col hover-option4 blog-post-style3 gutter-extra-large">
+                    <li class="grid-sizer"></li>
+                    <!-- start post item -->
+                    @if($jumlah_blog >= 1)
+                    @foreach($blogs as $blog)
+                    <li class="grid-item last-paragraph-no-margin text-center text-sm-start wow animate__fadeInUp">
+                        <div class="blog-post bg-light-gray">
+                            <div class="blog-post-images overflow-hidden position-relative">
+                                <a href="/blog/{{ $blog->slug }}">
+                                    <img src="{{ 'storage/' . $blog->gambar_blog }}" alt="" style="min-height: 30vh; max-height: 30vh; object-fit: cover">
+                                    <div class="blog-hover-icon"><span class="text-extra-large font-weight-300">+</span></div>
+                                </a>
+                            </div>
+                            <div class="post-details padding-40px-all md-padding-20px-all">
+                                <a href="/blog/{{ $blog->slug }}" class="alt-font post-title text-medium text-extra-dark-gray w-100 d-block lg-w-100 margin-15px-bottom">{{ $blog->judul }}</a>
+                                <p>{{ substr(strip_tags($blog->konten), 0, 79) }}</p>
+                                <div class="separator-line-horrizontal-full bg-medium-gray margin-20px-tb"></div>
+                                <div class="author">
+                                    <span class="text-medium-gray text-uppercase text-extra-small d-inline-block">Oleh {{ $blog->penulis }}&nbsp;&nbsp;|&nbsp;&nbsp;{{ $blog->created_at->isoFormat('d MMMM Y') }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    @endforeach
+                    @endif
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end blog section -->
+
 @endsection
